@@ -68,7 +68,7 @@ First, we should make sure that we are allowed to.
 
 In your **Console**, install `{robotstxt}`.
 
-```{r check_imdb}
+```{r check_tmdb}
 library(robotstxt)
 paths_allowed("http://www.tmdb.com")
 ```
@@ -134,12 +134,12 @@ Call this character vector `tmdb_tv_urls` and it should have the top 20 tv shows
 
 After you have the vector of show subpage locations, you will need to *update* this vector to have each entry begin with  `"http://www.themoviedb.com"` so that you have valid URLs (hint: look into `paste`, `paste0`, or my favorite `glue::glue`)
 
-Test `scrape_show_info` on the first few URLs (e.g., `imdb_tv_urls[1]` is the *first* URL).
+Test `scrape_show_info` on the first few URLs (e.g., `tmdb_tv_urls[1]` is the *first* URL).
 
 
 
 Now we will scrap the show information for every page for the top 100 TV shows.
-We could do this by typing `scrap_show_info(imdb_tv_urls[i])` for each of the 100 shows, but this would be extremely inefficient and we would probably accidentally scrape some TV shows multiple times while skipping others.
+We could do this by typing `scrap_show_info(tmdb_tv_urls[i])` for each of the 100 shows, but this would be extremely inefficient and we would probably accidentally scrape some TV shows multiple times while skipping others.
 
 To do this, you will explore two methods:
 
