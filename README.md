@@ -2,7 +2,8 @@ Activity 10 - Iteration
 ================
 
 For this activity, it is assumed that you read Sections 21.1 - 21.5 from
-R4DS and completed the corresponding Primers.
+R4DS, Chapter 7 from Modern Dive, and Chapter 20 from R Programming for
+Data Science.
 
 In this activity, you will:
 
