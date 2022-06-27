@@ -54,7 +54,7 @@ Below are instructions to get started using SelectorGadget, but you are welcome 
 5. Click on "Clear" to de-select it.
 6. You can also search for different elements.
   Type `.panel` when you have nothing else selected (i.e., where it says "No valid path found.").
-7. Click or type to explore at least these elements:
+7. Click on areas to explore at least these elements:
   - Title
   - Year
   - Content Rating
@@ -104,7 +104,7 @@ scrape_tmdb <- function(url){
     str_replace(".+r(.+)", "\\1") %>% # `\\1` refers to string matched by the first capture group `(.+)`
     as.numeric()
   
-  # Create a tibble containing all the scraped information
+  # Output a tibble with one row that contains the above scraped information
   tibble(
     title = title,
     year = year,
