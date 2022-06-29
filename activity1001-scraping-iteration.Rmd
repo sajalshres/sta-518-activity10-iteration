@@ -30,6 +30,10 @@ And, although it is structured (hierarchical/tree based), HTML data is often not
 However, it is not loaded with the tidyverse so you will need to load it separately.
 In the space below, load `{tidyverse}` and `{rvest}`.
 
+```{r}
+library(tidyverse)
+library(rvest)
+```
 
 
 The core functions that you may find useful are:
@@ -70,7 +74,7 @@ In your **Console**, install `{robotstxt}`.
 
 ```{r check_tmdb}
 library(robotstxt)
-paths_allowed("http://www.tmdb.com")
+paths_allowed("https://www.themoviedb.org/")
 ```
 
 Compare this to, for example:
@@ -97,6 +101,29 @@ scrape_tmdb <- function(url){
   
   # Update this part of the function to scrape the appropriate information
   
+  # Scrape title
+  title <- page %>%
+    html_element("div.title.ott_true") %>%
+    html_element("h2") %>% 
+    html_element("a") %>% 
+    html_text()
+  
+  # Scrape year
+  year <- page %>%
+    html_element("span.tag.release_date") %>%
+    html_text() %>%
+    str_replace_all("\\(|\\)", "") %>%
+    as.numeric()
+  print(year)
+  
+  # Scrape ratings
+  rating <- page %>%
+    html_element("span.certification") %>%
+    html_text()
+  
+  print(rating)
+    
+  
   # Scrape TMDB score
   score <- page %>% 
     html_node("span.icon") %>% 
@@ -118,6 +145,11 @@ scrape_tmdb <- function(url){
 
 Use your function to obtain the information from this TV Show: `https://www.themoviedb.org/tv/2382`
 
+```{r scrape_tmdb_freaks_and_greeks}
+
+scrape_tmdb("https://www.themoviedb.org/tv/2382")
+
+```
 
 
 
